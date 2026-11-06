@@ -3,7 +3,7 @@
  * Mutes (for you only) anyone in your call who gets louder than a threshold,
  * then unmutes them once they've been quiet for a bit.
  * Also auto-mutes anyone joining with a stereo mic.
- *
+ * Toggle for plugin to work on friends 
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
