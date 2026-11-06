@@ -1,5 +1,5 @@
 /*
- * LoudnessDucker — a Vencord user plugin by lyix
+ * AutoMuteDiscord — a Vencord user plugin by lyix
  * Mutes (for you only) anyone in your call who gets louder than a threshold,
  * then unmutes them once they've been quiet for a bit.
  * Also auto-mutes anyone joining with a stereo mic.
@@ -19,7 +19,7 @@ const MediaEngineStore = findStoreLazy("MediaEngineStore");
 const VoiceStateStore = findStoreLazy("VoiceStateStore");
 const RelationshipStore = findStoreLazy("RelationshipStore");
 
-const logger = new Logger("LoudnessDucker");
+const logger = new Logger("AutoMuteDiscord");
 
 const settings = definePluginSettings({
     threshold: {
@@ -561,12 +561,12 @@ const UserContextMenuPatch: NavContextMenuPatchCallback = (children, { user }: {
     if (reason && reason !== "manual") {
         children.push(muted
             ? <Menu.MenuItem
-                id="vc-loudness-ducker-toggle"
+                id="vc-automute-toggle"
                 label={`Unmute ${REASON_NAME[reason]}`}
                 action={() => manualUnmute(user.id, reason)}
             />
             : <Menu.MenuItem
-                id="vc-loudness-ducker-toggle"
+                id="vc-automute-toggle"
                 label={`Mute ${REASON_NAME[reason]}`}
                 action={() => manualMute(user.id, reason)}
             />
@@ -575,12 +575,12 @@ const UserContextMenuPatch: NavContextMenuPatchCallback = (children, { user }: {
 
     children.push(settings.store.stereoUsers[user.id]
         ? <Menu.MenuItem
-            id="vc-loudness-ducker-stereo-list"
+            id="vc-automute-stereo-list"
             label="Unmark Stereo Mic"
             action={() => unmarkStereo(user.id)}
         />
         : <Menu.MenuItem
-            id="vc-loudness-ducker-stereo-list"
+            id="vc-automute-stereo-list"
             label="Mark As Stereo Mic"
             action={() => markStereo(user.id)}
         />
@@ -588,12 +588,12 @@ const UserContextMenuPatch: NavContextMenuPatchCallback = (children, { user }: {
 
     children.push(forceUnmuted.has(user.id)
         ? <Menu.MenuItem
-            id="vc-loudness-ducker-force"
+            id="vc-automute-force"
             label="Force Mute"
             action={() => forceMute(user.id)}
         />
         : <Menu.MenuItem
-            id="vc-loudness-ducker-force"
+            id="vc-automute-force"
             label="Force Unmute"
             action={() => forceUnmute(user.id)}
         />
@@ -612,8 +612,8 @@ function About() {
 }
 
 export default definePlugin({
-    name: "LoudnessDucker",
-    description: "Mutes people (only for you) while they're too loud, auto-mutes stereo mics, and tells you about it.",
+    name: "AutoMuteDiscord",
+    description: "Auto-mutes loud mics, stereo mics, fake deafeners, and people who won't stop talking (only for you), with notifications and right-click unmute.",
     authors: [{ name: "lyix", id: 348635089825169422n }],
     settings,
     settingsAboutComponent: About,

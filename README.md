@@ -1,6 +1,6 @@
 <img src="avatar.jpg" width="96" align="right" alt="lyix">
 
-# LoudnessDucker
+# AutoMuteDiscord
 
 A Vencord user plugin by **lyix** that auto-mutes people in voice calls (only for you) when they:
 
@@ -14,9 +14,9 @@ You get a notification at the top of Discord when it happens, and you can right-
 ## Install
 
 1. Build Vencord from source: https://docs.vencord.dev/installing/
-2. Download `index.tsx` from this repo (click it, then the download button), make a folder called `loudnessDucker` in `Vencord/src/userplugins/`, and put `index.tsx` inside it
+2. Download `index.tsx` from this repo (click it, then the download button), make a folder called `autoMuteDiscord` in `Vencord/src/userplugins/`, and put `index.tsx` inside it
 3. Run `pnpm build` then `pnpm inject`, and restart Discord
-4. Enable **LoudnessDucker** in Settings → Vencord → Plugins
+4. Enable **AutoMuteDiscord** in Settings → Vencord → Plugins
 
 If the build fails because of a *different* user plugin, put a `_` in front of that plugin's folder name so the build skips it.
 
