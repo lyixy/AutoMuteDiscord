@@ -31,3 +31,5 @@ If the build fails because of a *different* user plugin, put a `_` in front of t
 Threshold, attack time, stay muted, talk limit and mute length (0 = forever), stereo bitrate limit, ignore friends, notifications, and a debug mode that logs everyone's levels to the console (Ctrl+Shift+I) so you can tune things.
 
 Muting uses Discord's own per-user Mute, so you can always undo it from Discord's normal right-click menu too.
+
+[COMPLTELY VIBE CODED]
